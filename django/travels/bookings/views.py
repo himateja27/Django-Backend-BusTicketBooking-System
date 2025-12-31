@@ -58,6 +58,7 @@ class BookingView(APIView):
             return Response(serializer.data,status=status.HTTP_201_CREATED)
         except Seat.DoesNotExist:
             return Response({'error':'Invalid Seat ID'},status=status.HTTP_400_BAD_REQUEST)
+        
 class UserBookingView(APIView):
     permission_classes=[IsAuthenticated]
 
