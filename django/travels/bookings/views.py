@@ -39,7 +39,6 @@ class BusDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 class BookingView(APIView):
     permission_classes=[IsAuthenticated]
-
     def post(self,request):
         seat_id=request.data.get('seat')
         try:
