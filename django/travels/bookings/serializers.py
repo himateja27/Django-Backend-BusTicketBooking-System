@@ -16,16 +16,18 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             password=validated_data['password']
         )
         return user
+    
+class SeatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Seat
+        fields='__all__'
 
 class BusSerializer(serializers.ModelSerializer):
+    seats=SeatSerializer(many=True, read_only=True)
     class Meta:
         model=Bus
         fields='__all__'
 
-class SeatSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Seat
-        fileds=['id','seat_number','is_booked']
 
 class BookingSerializer(serializers.ModelSerializer):
     bus=serializers.StringRelatedField()
